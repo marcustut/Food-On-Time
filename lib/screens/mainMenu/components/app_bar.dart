@@ -7,8 +7,8 @@ AppBar menuAppBar(BuildContext context) {
     leading: CircleAvatar(
       radius: 15,
       child: ClipOval(
-        child: Image.network(
-          'https://i.ibb.co/vvLzjHf/Profile-Pic.jpg',
+        child: Image.asset(
+          'assets/avatars/KaiYang.jpg',
           width: 30,
           height: 30,
           fit: BoxFit.cover,

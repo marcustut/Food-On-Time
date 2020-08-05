@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
 import 'package:food_on_time/screens/mainMenu/mainMenu.dart';
+import 'package:food_on_time/screens/getStarted/getStarted.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(color: kSecondaryColor),
         ),
       ),
-      home: MainMenu(),
+      home: GetStarted(),
     );
   }
 }

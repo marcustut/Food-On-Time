@@ -57,7 +57,7 @@ class ItemList extends StatelessWidget {
                                   storesToRender.add(new ItemCard(
                                     storeTitle: store.storeTitle,
                                     address: store.address,
-                                    imgUrl: store.imgUrl,
+                                    imgPath: store.imgPath,
                                     tags: store.tags,
                                     distance: store.distance,
                                     rating: store.rating,

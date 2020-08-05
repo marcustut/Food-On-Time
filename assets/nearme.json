@@ -2,7 +2,7 @@
   {
     "storeTitle": "McDonald's",
     "address": "Shell Jalan Cheras, Lot PT 7430, HSD 111856, KM5, 5, Jln Cheras, 56000 Cheras.",
-    "imgUrl": "https://di-uploads-pod18.dealerinspire.com/outtencdjr/uploads/2019/03/Hamburger.jpg",
+    "imgPath": "assets/images/mcdonalds.jpg",
     "tags": "#burger #fastfood",
     "distance": 1.2,
     "rating": 4.0,
@@ -11,7 +11,7 @@
   {
     "storeTitle": "Texas Chicken",
     "address": "Lot A-28, Tesco Extra Cheras, Taman Midah, 56000 Cheras.",
-    "imgUrl": "https://lh3.googleusercontent.com/proxy/JGLSirMwDrbhU_L7iSP8sEF2pb6uMV7czC8F1mabbM_A5p5R4wqqIIK-7ry8QGysdJ_Q6nALIBzBENerSeAQ_xIAkR_PPJShYOzogeQnaDyCj7lr",
+    "imgPath": "assets/images/texas-chicken.jpg",
     "tags": "#friedchicken #fastfood",
     "distance": 1.8,
     "rating": 4.0,
@@ -20,7 +20,7 @@
   {
     "storeTitle": "KFC",
     "address": "9, Jalan 2/90, Taman Pertama, 56000 Cheras, Wilayah Persekutuan Kuala Lumpur",
-    "imgUrl": "https://res.cloudinary.com/glovoapp/w_1200,f_auto,q_auto/Stores/vdhopli1m6qclo3oocls",
+    "imgPath": "assets/images/kfc.jpg",
     "tags": "#friedchicken #fastfood",
     "distance": 2.1,
     "rating": 3.0,

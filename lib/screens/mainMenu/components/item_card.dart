@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
 
 class ItemCard extends StatelessWidget {
-  final String storeTitle, address, imgUrl, tags;
+  final String storeTitle, address, imgPath, tags;
   final double distance, rating;
   final int checkIns;
   final Function press;
@@ -11,7 +11,7 @@ class ItemCard extends StatelessWidget {
       {Key key,
       this.storeTitle,
       this.address,
-      this.imgUrl,
+      this.imgPath,
       this.press,
       this.tags,
       this.distance,
@@ -78,7 +78,7 @@ class ItemCard extends StatelessWidget {
                       height: 125.0,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage(imgUrl),
+                          image: AssetImage(imgPath),
                           fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.only(

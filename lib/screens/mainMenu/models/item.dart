@@ -1,14 +1,14 @@
 import 'dart:convert';
 
 class Item {
-  final String storeTitle, address, imgUrl, tags;
+  final String storeTitle, address, imgPath, tags;
   final double distance, rating;
   final int checkIns;
 
   Item(
       {this.storeTitle,
       this.address,
-      this.imgUrl,
+      this.imgPath,
       this.tags,
       this.distance,
       this.rating,
@@ -18,7 +18,7 @@ class Item {
     return Item(
       storeTitle: json['storeTitle'] as String,
       address: json['address'] as String,
-      imgUrl: json['imgUrl'] as String,
+      imgPath: json['imgPath'] as String,
       tags: json['tags'] as String,
       distance: json['distance'] as double,
       rating: json['rating'] as double,
