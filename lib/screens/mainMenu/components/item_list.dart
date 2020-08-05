@@ -1,8 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/screens/mainMenu/components/item_card.dart';
 import 'package:food_on_time/constant.dart';
+import 'package:food_on_time/screens/mainMenu/models/item.dart';
 
 class ItemList extends StatelessWidget {
+  final String categoryTitle, jsonPath;
+
+  const ItemList({Key key, this.categoryTitle, this.jsonPath})
+      : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return ConstrainedBox(
@@ -17,7 +23,7 @@ class ItemList extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: <Widget>[
                 Text(
-                  'RECOMMENDATION',
+                  '$categoryTitle'.toUpperCase(),
                   style: TextStyle(
                       fontSize: 14,
                       color: kTextLightColor,
@@ -33,43 +39,42 @@ class ItemList extends StatelessWidget {
                   Row(
                     children: <Widget>[
                       SingleChildScrollView(
-                          scrollDirection: Axis.horizontal,
-                          child: Row(
-                            children: <Widget>[
-                              ItemCard(
-                                title: "Burger",
-                                address: "Kampus Utama, Jalan Genting Kelang",
-                                imgUrl: "",
-                                press: () {
-                                  print("I am Card 1");
-                                },
-                              ),
-                              ItemCard(
-                                title: "Burger",
-                                address: "McDonalds",
-                                imgUrl: "",
-                                press: () {},
-                              ),
-                              ItemCard(
-                                title: "Burger",
-                                address: "McDonalds",
-                                imgUrl: "",
-                                press: () {},
-                              ),
-                              ItemCard(
-                                title: "Burger",
-                                address: "McDonalds",
-                                imgUrl: "",
-                                press: () {},
-                              ),
-                              ItemCard(
-                                title: "Burger",
-                                address: "McDonalds",
-                                imgUrl: "",
-                                press: () {},
-                              ),
-                            ],
-                          )),
+                        scrollDirection: Axis.horizontal,
+                        // FutureBuilder to load json file
+                        child: new FutureBuilder(
+                            future: DefaultAssetBundle.of(context)
+                                .loadString(jsonPath),
+                            builder: (context, snapshot) {
+                              List<Item> stores =
+                                  Item.parseJson(snapshot.data.toString());
+
+                              // if the json file is not empty
+                              if (stores.isNotEmpty) {
+                                // return a list of ItemCard widgets
+                                List<ItemCard> storesToRender =
+                                    new List<ItemCard>();
+                                for (var store in stores) {
+                                  storesToRender.add(new ItemCard(
+                                    storeTitle: store.storeTitle,
+                                    address: store.address,
+                                    imgUrl: store.imgUrl,
+                                    tags: store.tags,
+                                    distance: store.distance,
+                                    rating: store.rating,
+                                    checkIns: store.checkIns,
+                                    press: () {},
+                                  ));
+                                }
+                                return new Row(children: storesToRender);
+                                // if json file is empty
+                              } else {
+                                // return a circle loading indicator
+                                return new Center(
+                                  child: CircularProgressIndicator(),
+                                );
+                              }
+                            }),
+                      ),
                     ],
                   ),
                 ],

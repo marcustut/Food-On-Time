@@ -1,0 +1,29 @@
+[
+  {
+    "storeTitle": "Sushi Hiro",
+    "address": "77, Jalan Radin Bagus, Sri Petaling, 57000 Kuala Lumpur.",
+    "imgUrl": "https://www.nippon.com/en/ncommon/contents/japan-data/169591/169591.jpg",
+    "tags": "#sushi #salmon #japanese",
+    "distance": 2.7,
+    "rating": 4.0,
+    "checkIns": 126
+  },
+  {
+    "storeTitle": "Domino's",
+    "address": "138, Jalan Jejaka, Maluri, 55100 Kuala Lumpur, Wilayah Persekutuan.",
+    "imgUrl": "https://images.axios.com/h_PlO81kNMjg-_CpbhqCXajKW5A=/0x278:3000x1966/1920x1080/2019/07/18/1563453786016.jpg",
+    "tags": "#pizza #fastfood",
+    "distance": 3.2,
+    "rating": 4.0,
+    "checkIns": 48
+  },
+  {
+    "storeTitle": "Ayu West Grill",
+    "address": "Lot 65089, Persiaran Puchong Prima, Taman Puchong Permai, 47500 Puchong, Selangor.",
+    "imgUrl": "https://i2.wp.com/www.foodrepublic.com/wp-content/uploads/2012/05/testkitchen_argentinesteak.jpg?resize=1280%2C%20560&ssl=1",
+    "tags": "#western #steak #pasta",
+    "distance": 4.5,
+    "rating": 5.0,
+    "checkIns": 165
+  }
+]

@@ -2,17 +2,56 @@ import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
 
 class ItemCard extends StatelessWidget {
-  final String title, address, imgUrl;
+  final String storeTitle, address, imgUrl, tags;
+  final double distance, rating;
+  final int checkIns;
   final Function press;
 
-  const ItemCard({Key key, this.title, this.address, this.imgUrl, this.press})
+  const ItemCard(
+      {Key key,
+      this.storeTitle,
+      this.address,
+      this.imgUrl,
+      this.press,
+      this.tags,
+      this.distance,
+      this.checkIns,
+      this.rating})
       : super(key: key);
+
+  Row storeRating(double rating) {
+    if (rating < 1 || rating > 5) assert(false);
+
+    Row storeRating = Row(children: <Widget>[]);
+
+    for (int i = 0; i < rating.floor(); i++) {
+      storeRating.children.add(
+        Icon(
+          Icons.star,
+          size: 15.0,
+          color: Colors.amber,
+        ),
+      );
+    }
+
+    for (int i = 5; i > rating.floor(); i--) {
+      storeRating.children.add(
+        Icon(
+          Icons.star,
+          size: 15.0,
+          color: Colors.grey.shade300,
+        ),
+      );
+    }
+
+    return storeRating;
+  }
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: 300.0,
-      height: 250.0,
+      height: 263.0,
       margin: EdgeInsets.only(bottom: 15, top: 15, left: 15, right: 15),
       decoration: BoxDecoration(
           color: Colors.white,
@@ -39,9 +78,8 @@ class ItemCard extends StatelessWidget {
                       height: 125.0,
                       decoration: BoxDecoration(
                         image: DecorationImage(
-                          image: NetworkImage(
-                              'https://upload.wikimedia.org/wikipedia/commons/6/6d/Good_Food_Display_-_NCI_Visuals_Online.jpg'),
-                          fit: BoxFit.fill,
+                          image: NetworkImage(imgUrl),
+                          fit: BoxFit.cover,
                         ),
                         borderRadius: BorderRadius.only(
                           topLeft: const Radius.circular(10),
@@ -57,7 +95,7 @@ class ItemCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                   child: Text(
-                    title,
+                    storeTitle,
                     style: TextStyle(
                       color: kTextColor,
                       fontSize: 20,
@@ -83,38 +121,9 @@ class ItemCard extends StatelessWidget {
                     child: Column(
                       children: <Widget>[
                         Container(
-                          width: 120.0,
-                          height: 10.0,
-                          child: Row(
-                            children: <Widget>[
-                              Icon(
-                                Icons.star,
-                                size: 15.0,
-                                color: Colors.amber,
-                              ),
-                              Icon(
-                                Icons.star,
-                                size: 15.0,
-                                color: Colors.amber,
-                              ),
-                              Icon(
-                                Icons.star,
-                                size: 15.0,
-                                color: Colors.amber,
-                              ),
-                              Icon(
-                                Icons.star,
-                                size: 15.0,
-                                color: Colors.amber,
-                              ),
-                              Icon(
-                                Icons.star,
-                                size: 15.0,
-                                color: Colors.grey.shade300,
-                              ),
-                            ],
-                          ),
-                        )
+                            width: 120.0,
+                            height: 10.0,
+                            child: storeRating(rating))
                       ],
                     )),
               ),
@@ -123,7 +132,7 @@ class ItemCard extends StatelessWidget {
                 child: Padding(
                   padding: const EdgeInsets.fromLTRB(10, 20, 10, 0),
                   child: Text(
-                    '#AMERICA #BURGER',
+                    '$tags'.toUpperCase(),
                     style: TextStyle(
                         color: kTextColor,
                         fontSize: 12,
@@ -139,7 +148,7 @@ class ItemCard extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        '213 check-ins',
+                        '$checkIns check-ins',
                         style: TextStyle(color: kTextColor),
                       ),
                       Row(
@@ -149,7 +158,7 @@ class ItemCard extends StatelessWidget {
                             size: 13,
                           ),
                           Text(
-                            ' 1.2 km',
+                            ' $distance km',
                             style: TextStyle(color: kTextColor),
                           ),
                         ],
