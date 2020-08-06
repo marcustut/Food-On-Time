@@ -5,13 +5,25 @@ AppBar menuAppBar(BuildContext context) {
   return AppBar(
     elevation: 0,
     leading: CircleAvatar(
-      radius: 30.0,
-      backgroundImage: NetworkImage(
-          'https://upload.wikimedia.org/wikipedia/commons/thumb/4/48/Outdoors-man-portrait_%28cropped%29.jpg/1200px-Outdoors-man-portrait_%28cropped%29.jpg'),
+      radius: 15,
+      child: ClipOval(
+        child: Image.asset(
+          'assets/avatars/KaiYang.jpg',
+          width: 30,
+          height: 30,
+          fit: BoxFit.cover,
+        ),
+      ),
+      backgroundColor: Colors.transparent,
     ),
     actions: <Widget>[
       IconButton(
-          icon: Icon(Icons.search, color: kTextLightColor), onPressed: null)
+        icon: Icon(
+          Icons.search,
+          color: kTextLightColor,
+        ),
+        onPressed: () {},
+      )
     ],
   );
 }
