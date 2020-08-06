@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
-import 'package:food_on_time/screens/mainMenu/mainMenu.dart';
-import 'package:food_on_time/screens/getStarted/getStarted.dart';
+import 'package:food_on_time/screens/splashScreen/splash_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -13,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'FOT Demo',
+      title: 'Food On Time',
       theme: ThemeData(
         primaryColor: kPrimaryColor,
         scaffoldBackgroundColor: Colors.white,
@@ -22,7 +21,9 @@ class MyApp extends StatelessWidget {
           bodyText2: TextStyle(color: kSecondaryColor),
         ),
       ),
-      home: GetStarted(),
+      home: MySplashScreen(
+        seconds: 1,
+      ),
     );
   }
 }

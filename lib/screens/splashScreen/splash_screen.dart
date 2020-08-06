@@ -1,10 +1,13 @@
-import 'package:animated_splash/animated_splash.dart';
 import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
-import 'package:food_on_time/screens/get_started/components/body.dart';
+import 'package:food_on_time/screens/getStarted/getStarted.dart';
 import 'package:splashscreen/splashscreen.dart';
 
 class MySplashScreen extends StatefulWidget {
+  final int seconds;
+
+  const MySplashScreen({Key key, this.seconds}) : super(key: key);
+
   @override
   _MySplashScreenState createState() => _MySplashScreenState();
 }
@@ -13,7 +16,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
   @override
   Widget build(BuildContext context) {
     return SplashScreen(
-      seconds: 30,
+      seconds: widget.seconds,
       backgroundColor: kSecondaryColor,
       title: Text(
         '\n\n\nFood On Time',
@@ -25,7 +28,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
         ),
       ),
       navigateAfterSeconds:
-          Body(), //Displays the Get Started page after splash screen
+          GetStarted(), //Displays the Get Started page after splash screen
       loaderColor: Colors.transparent,
     );
 
