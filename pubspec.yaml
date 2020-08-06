@@ -23,9 +23,10 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  splashscreen:
+  animated_splash: ^1.0.0
 
   flutter_rating_bar: ^3.0.1+1
-  flutter_svg: ^0.17.4
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -49,11 +50,7 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/recommendations.json
-    - assets/nearme.json
-    - assets/icons/
-    - assets/images/
-    - assets/avatars/
+    - lib/assets/
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.
