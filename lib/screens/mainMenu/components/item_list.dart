@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/screens/mainMenu/components/item_card.dart';
+import 'package:food_on_time/screens/review/review-screen.dart';
+import 'package:food_on_time/screens/detail/detail-screen.dart';
 import 'package:food_on_time/constant.dart';
 
 class ItemList extends StatelessWidget {
@@ -48,13 +50,31 @@ class ItemList extends StatelessWidget {
                                 title: "Burger",
                                 address: "McDonalds",
                                 imgUrl: "",
-                                press: () {},
+                                press: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return ReviewScreen();
+                                      },
+                                    ),
+                                  );
+                                },
                               ),
                               ItemCard(
                                 title: "Burger",
                                 address: "McDonalds",
                                 imgUrl: "",
-                                press: () {},
+                                press: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return DetailScreen();
+                                      },
+                                    ),
+                                  );
+                                },
                               ),
                               ItemCard(
                                 title: "Burger",
