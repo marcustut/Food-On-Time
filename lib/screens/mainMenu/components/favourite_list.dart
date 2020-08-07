@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/screens/mainMenu/components/favourite_card.dart';
 import 'package:food_on_time/constant.dart';
+import 'package:food_on_time/screens/review/review-screen.dart';
 
 class FavouriteList extends StatelessWidget {
   final String categoryTitle;
@@ -44,7 +45,16 @@ class FavouriteList extends StatelessWidget {
                               FavouriteCard(
                                 cardTitle: "Fastfood",
                                 cardIconSvg: "assets/icons/fast-food.svg",
-                                press: () {},
+                                press: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) {
+                                        return ReviewScreen();
+                                      },
+                                    ),
+                                  );
+                                },
                               ),
                               FavouriteCard(
                                 cardTitle: "Sushi",

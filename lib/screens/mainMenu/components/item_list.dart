@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/screens/mainMenu/components/item_card.dart';
+import 'package:food_on_time/screens/review/review-screen.dart';
+import 'package:food_on_time/screens/detail/detail-screen.dart';
 import 'package:food_on_time/constant.dart';
 import 'package:food_on_time/screens/mainMenu/models/item.dart';
 
@@ -62,7 +64,16 @@ class ItemList extends StatelessWidget {
                                     distance: store.distance,
                                     rating: store.rating,
                                     checkIns: store.checkIns,
-                                    press: () {},
+                                    press: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) {
+                                            return DetailScreen();
+                                          },
+                                        ),
+                                      );
+                                    },
                                   ));
                                 }
                                 return new Row(children: storesToRender);
