@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
+import 'package:food_on_time/screens/loginRegister/loginSheet.dart';
 import 'package:food_on_time/screens/mainMenu/mainMenu.dart';
 
 class Body extends StatelessWidget {
@@ -110,14 +111,13 @@ class Body extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5.0),
                 ),
-                color: kSecondaryColor, // This is Button Color
+                color: Colors.yellow.shade700, // This is Button Color
                 hoverColor: kPrimaryColor,
                 hoverElevation: 5,
                 onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => MainMenu()),
-                  );
+                  showBottomSheet(
+                      context: context,
+                      builder: (context) => BottomLoginSheet());
                 },
                 child: Text(
                   'Get Started',

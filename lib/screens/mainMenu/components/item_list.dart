@@ -47,43 +47,71 @@ class ItemList extends StatelessWidget {
                             future: DefaultAssetBundle.of(context)
                                 .loadString(jsonPath),
                             builder: (context, snapshot) {
-                              List<Item> stores =
-                                  Item.parseJson(snapshot.data.toString());
+                              List<Widget> children;
 
-                              // if the json file is not empty
-                              if (stores.isNotEmpty) {
-                                // return a list of ItemCard widgets
-                                List<ItemCard> storesToRender =
-                                    new List<ItemCard>();
-                                for (var store in stores) {
-                                  storesToRender.add(new ItemCard(
-                                    storeTitle: store.storeTitle,
-                                    address: store.address,
-                                    imgPath: store.imgPath,
-                                    tags: store.tags,
-                                    distance: store.distance,
-                                    rating: store.rating,
-                                    checkIns: store.checkIns,
-                                    press: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) {
-                                            return DetailScreen();
-                                          },
-                                        ),
-                                      );
-                                    },
-                                  ));
+                              if (snapshot.hasData) {
+                                List<Item> stores =
+                                    Item.parseJson(snapshot.data.toString());
+
+                                // if the json file is not empty
+                                if (stores.isNotEmpty) {
+                                  // return a list of ItemCard widgets
+                                  List<ItemCard> storesToRender =
+                                      new List<ItemCard>();
+                                  for (var store in stores) {
+                                    storesToRender.add(new ItemCard(
+                                      storeTitle: store.storeTitle,
+                                      address: store.address,
+                                      imgPath: store.imgPath,
+                                      tags: store.tags,
+                                      distance: store.distance,
+                                      rating: store.rating,
+                                      checkIns: store.checkIns,
+                                      press: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                            builder: (context) {
+                                              return DetailScreen(
+                                                address: store.address,
+                                                imgPath: store.imgPath,
+                                                rating: store.rating,
+                                                storeTitle: store.storeTitle,
+                                              );
+                                            },
+                                          ),
+                                        );
+                                      },
+                                    ));
+                                  }
+                                  return new Row(children: storesToRender);
+                                  // if json file is empty
                                 }
-                                return new Row(children: storesToRender);
-                                // if json file is empty
+                              } else if (snapshot.hasError) {
+                                children = <Widget>[
+                                  Icon(
+                                    Icons.error_outline,
+                                    color: Colors.red,
+                                    size: 60,
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 16),
+                                    child: Text('Error: ${snapshot.error}'),
+                                  )
+                                ];
                               } else {
-                                // return a circle loading indicator
-                                return new Center(
-                                  child: CircularProgressIndicator(),
-                                );
+                                children = <Widget>[
+                                  CircularProgressIndicator(),
+                                ];
                               }
+
+                              return Center(
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: children,
+                                ),
+                              );
                             }),
                       ),
                     ],

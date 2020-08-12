@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "413030869387",
+    "firebase_url": "https://food-on-time-8d487.firebaseio.com",
+    "project_id": "food-on-time-8d487",
+    "storage_bucket": "food-on-time-8d487.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:413030869387:android:6d73781f513423d483a78e",
+        "android_client_info": {
+          "package_name": "com.assignment.food_on_time"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "413030869387-btpcehi8enbv2fiafu0093jk6ol92dq0.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDbZEu_HNXPgK08J9AQHf25vAlm5ZIIRLY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "413030869387-btpcehi8enbv2fiafu0093jk6ol92dq0.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

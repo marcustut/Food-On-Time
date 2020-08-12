@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
         ),
       ),
       home: MySplashScreen(
-        seconds: 1,
+        seconds: 2,
       ),
     );
   }

@@ -17,7 +17,7 @@ class _MySplashScreenState extends State<MySplashScreen> {
   Widget build(BuildContext context) {
     return SplashScreen(
       seconds: widget.seconds,
-      backgroundColor: kSecondaryColor,
+      backgroundColor: kPrimaryColor,
       title: Text(
         '\n\n\nFood On Time',
         textAlign: TextAlign.center,
