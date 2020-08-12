@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
 
+
 AppBar menuAppBar(BuildContext context) {
   return AppBar(
     elevation: 0,
@@ -23,7 +24,8 @@ AppBar menuAppBar(BuildContext context) {
           color: kTextLightColor,
         ),
         onPressed: () {},
-      )
+      ),
     ],
+    
   );
 }

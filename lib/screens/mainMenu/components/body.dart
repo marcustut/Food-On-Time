@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
 import 'package:food_on_time/screens/mainMenu/components/favourite_list.dart';
 import 'package:food_on_time/screens/mainMenu/components/item_list.dart';
-import 'package:flutter_svg/flutter_svg.dart';
+
 
 class Body extends StatelessWidget {
   @override
