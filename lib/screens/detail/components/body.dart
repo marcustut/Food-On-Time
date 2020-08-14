@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
+import 'package:food_on_time/constant.dart';
 import 'package:food_on_time/screens/detail/components/alert_dialog.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
@@ -17,30 +18,48 @@ class Body extends StatefulWidget {
 }
 
 class _BodyState extends State<Body> {
-  int _n = 0;
-  double price = 15.90;
-  double total_price = 0.00;
+  int _n = 1;
+  double price = 15.9;
+  double totalPrice = 0.0;
+
+  void setInitialTotalPrice() {
+    setState(() {
+      totalPrice = _n * price;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    setInitialTotalPrice();
+  }
 
   @override
   Widget build(BuildContext context) {
     final String information = "1 X Cheese Burger \n"
         "1 X French Fries \n"
         "1 X Soft Drink \n"
+        "1 X Cheezy Wedges \n"
         "1 X Chicken Nugget \n";
 
+    Size size = MediaQuery.of(context).size;
+
     return SingleChildScrollView(
-      child: new Container(
-        child: Column(children: <Widget>[
+      child: Column(
+        children: <Widget>[
           Container(
-            padding: new EdgeInsets.fromLTRB(12.0, 20.0, 12.0, 20.0),
+            padding: EdgeInsets.fromLTRB(12.0, 20.0, 12.0, 20.0),
             alignment: Alignment.center,
             width: double.infinity,
-            height: 180,
+            height: size.height * 0.3,
             child: Swiper(
               itemBuilder: (BuildContext context, int index) {
-                return new Image.asset(
-                  widget.imgPath,
-                  fit: BoxFit.cover,
+                return ClipRRect(
+                  borderRadius: BorderRadius.circular(8.0),
+                  child: Image.asset(
+                    widget.imgPath,
+                    fit: BoxFit.cover,
+                  ),
                 );
               },
               itemCount: 10,
@@ -49,20 +68,20 @@ class _BodyState extends State<Body> {
             ),
           ),
           Container(
-            padding: new EdgeInsets.fromLTRB(20.0, 30.0, 0.0, 0.0),
+            padding: new EdgeInsets.only(left: 20.0, top: 30.0),
             width: double.infinity,
-            height: 440,
+            height: size.height * 0.7,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(30),
-                topRight: Radius.circular(30),
+                topLeft: Radius.circular(10),
+                topRight: Radius.circular(10),
               ),
             ),
             child: Column(
               children: <Widget>[
                 Container(
-                    padding: new EdgeInsets.fromLTRB(5.0, 0.0, 20.0, 0.0),
+                    padding: new EdgeInsets.fromLTRB(0.0, 0.0, 20.0, 0.0),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
@@ -75,14 +94,14 @@ class _BodyState extends State<Body> {
                           ),
                           Row(children: <Widget>[
                             new Text(
-                              "RM $price ",
+                              "RM ${price.toStringAsFixed(2)} ",
                               style: new TextStyle(
                                   color: Colors.red, fontSize: 20),
                             ),
                           ])
                         ])),
                 Container(
-                    padding: new EdgeInsets.fromLTRB(5.0, 10.0, 15.0, 0.0),
+                    padding: new EdgeInsets.fromLTRB(0.0, 10.0, 15.0, 0.0),
                     child: Row(children: <Widget>[
                       Flexible(
                         child: new Text(
@@ -93,7 +112,7 @@ class _BodyState extends State<Body> {
                       ),
                     ])),
                 Container(
-                    padding: new EdgeInsets.fromLTRB(0.0, 10.0, 0.0, 0.0),
+                    padding: new EdgeInsets.only(top: 10.0),
                     child: Row(children: <Widget>[
                       RatingBar(
                         initialRating: widget.rating,
@@ -101,7 +120,7 @@ class _BodyState extends State<Body> {
                         direction: Axis.horizontal,
                         allowHalfRating: true,
                         itemCount: 5,
-                        itemSize: 20,
+                        itemSize: size.width * 0.05,
                         itemPadding: EdgeInsets.symmetric(horizontal: 4.0),
                         itemBuilder: (context, _) => Icon(
                           Icons.star,
@@ -113,7 +132,7 @@ class _BodyState extends State<Body> {
                       ),
                     ])),
                 Container(
-                    padding: new EdgeInsets.fromLTRB(5.0, 30.0, 0.0, 0.0),
+                    padding: new EdgeInsets.only(top: 30.0),
                     child: Row(children: <Widget>[
                       new Text(
                         'Details :',
@@ -124,7 +143,7 @@ class _BodyState extends State<Body> {
                       ),
                     ])),
                 Container(
-                    padding: new EdgeInsets.fromLTRB(5.0, 5.0, 0.0, 0.0),
+                    padding: new EdgeInsets.only(top: 5.0),
                     child: Row(children: <Widget>[
                       new Text(
                         information,
@@ -134,38 +153,39 @@ class _BodyState extends State<Body> {
                 Container(
                     child: Row(children: <Widget>[
                   SizedBox(
-                    width: 330.0,
+                    width: size.width * 0.9,
                     child: StepProgressIndicator(
                       totalSteps: 100,
                       currentStep: 35,
-                      size: 8,
+                      size: size.width * 0.02,
                       padding: 0,
-                      selectedColor: Colors.yellow,
-                      unselectedColor: Colors.cyan,
-                      roundedEdges: Radius.circular(10),
+                      selectedColor: Colors.deepOrange,
+                      unselectedColor: Colors.deepOrange.shade100,
+                      roundedEdges: Radius.circular(5),
                     ),
                   )
                 ])),
                 Container(
-                    padding: new EdgeInsets.fromLTRB(0.0, 15.0, 0.0, 0.0),
+                    padding: new EdgeInsets.only(top: 15.0),
                     child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Padding(padding: EdgeInsets.only(left: 15.0)),
                           Text(
-                            'Left 65% to unlock the Deals',
+                            '65% left to unlock new Deals',
                             textAlign: TextAlign.center,
                             style: new TextStyle(
-                              color: Colors.grey[700],
+                              color: kTextColor,
                               fontSize: 12,
                             ),
                           ),
                         ])),
                 Container(
                   child: Padding(
-                    padding: new EdgeInsets.fromLTRB(0.0, 10.0, 10.0, 0.0),
+                    padding: new EdgeInsets.only(top: 13.0, right: 20.0),
                     child: Container(
-                        height: 1.0, width: 430.0, color: Colors.black),
+                        height: 1.0,
+                        width: size.width * 0.95,
+                        color: Colors.black),
                   ),
                 ),
                 Container(
@@ -173,14 +193,14 @@ class _BodyState extends State<Body> {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
                       Text(
-                        "RM $total_price",
+                        "RM ${totalPrice.toStringAsFixed(2)}",
                         style: new TextStyle(
-                            color: Colors.yellow[700],
+                            color: Colors.deepOrange,
                             fontSize: 17,
                             fontWeight: FontWeight.bold),
                       ),
                       Padding(
-                        padding: const EdgeInsets.all(0.0),
+                        padding: const EdgeInsets.only(right: 15.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: <Widget>[
@@ -191,7 +211,7 @@ class _BodyState extends State<Body> {
                                 onPressed: () {
                                   setState(() {
                                     if (_n != 0) _n--;
-                                    total_price = price * _n;
+                                    totalPrice = price * _n;
                                   });
                                   print(_n);
                                 }),
@@ -207,7 +227,7 @@ class _BodyState extends State<Body> {
                                 onPressed: () {
                                   setState(() {
                                     _n++;
-                                    total_price = price * _n;
+                                    totalPrice = price * _n;
                                   });
                                   print(_n);
                                 }),
@@ -218,14 +238,14 @@ class _BodyState extends State<Body> {
                   ),
                 ),
                 Container(
-                  padding: new EdgeInsets.fromLTRB(0.0, 0.0, 10.0, 0.0),
+                  padding: new EdgeInsets.only(right: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
                       RaisedButton(
                         shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(18.0),
-                            side: BorderSide(color: Colors.red)),
+                          borderRadius: BorderRadius.circular(18.0),
+                        ),
                         color: Colors.deepOrange,
                         onPressed: () {
                           showAlertDialog(context);
@@ -241,7 +261,7 @@ class _BodyState extends State<Body> {
               ],
             ),
           ),
-        ]),
+        ],
       ),
     );
   }

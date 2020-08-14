@@ -7,8 +7,13 @@
          FlutterApplication and put your custom class here. -->
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="food_on_time"
+        android:label="Food On Time"
         android:icon="@mipmap/ic_launcher">
+
+        <!-- Google Maps API Keys -->
+        <meta-data android:name="com.google.android.geo.API_KEY"
+               android:value="AIzaSyB0xbp_71_RI7gPmCfu6HQ_k5bciahaFsM"/>
+
         <activity
             android:name=".MainActivity"
             android:launchMode="singleTop"

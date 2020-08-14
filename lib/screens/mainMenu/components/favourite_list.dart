@@ -45,31 +45,18 @@ class FavouriteList extends StatelessWidget {
                               FavouriteCard(
                                 cardTitle: "Fastfood",
                                 cardIconSvg: "assets/icons/fast-food.svg",
-                                press: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                      builder: (context) {
-                                        return ReviewScreen();
-                                      },
-                                    ),
-                                  );
-                                },
                               ),
                               FavouriteCard(
                                 cardTitle: "Sushi",
                                 cardIconSvg: "assets/icons/sushi.svg",
-                                press: () {},
                               ),
                               FavouriteCard(
                                 cardTitle: "Pizza",
                                 cardIconSvg: 'assets/icons/pizza.svg',
-                                press: () {},
                               ),
                               FavouriteCard(
                                 cardTitle: "Western",
                                 cardIconSvg: 'assets/icons/steak.svg',
-                                press: () {},
                               ),
                             ],
                           )),

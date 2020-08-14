@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
+import 'package:food_on_time/screens/underConstruction/underConstruction.dart';
 
 AppBar menuAppBar(BuildContext context) {
   return AppBar(
@@ -51,7 +52,14 @@ AppBar menuAppBar(BuildContext context) {
           Icons.assignment,
           color: kTextLightColor,
         ),
-        onPressed: () {},
+        onPressed: () {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => UnderConstruction(),
+            ),
+          );
+        },
       )
     ],
   );

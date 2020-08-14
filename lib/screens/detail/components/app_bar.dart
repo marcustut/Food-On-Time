@@ -16,14 +16,7 @@ class AppBars extends PreferredSize {
           color: Colors.white,
         ),
         onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) {
-                return MainMenu();
-              },
-            ),
-          );
+          Navigator.of(context).pop();
         },
       ),
     );

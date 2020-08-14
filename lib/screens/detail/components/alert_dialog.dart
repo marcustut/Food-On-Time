@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:food_on_time/screens/trackOrder/trackOrder.dart';
 import 'package:progress_dialog/progress_dialog.dart';
-import 'package:food_on_time/screens/review/review-screen.dart';
 
 ProgressDialog pr;
 
@@ -9,31 +9,76 @@ void showAlertDialog(BuildContext context) {
   pr.style(message: 'Please wait...');
 
   int _currentIndex = 0;
+
+  Size size = MediaQuery.of(context).size;
+
   showDialog(
       context: context,
       builder: (context) {
         return AlertDialog(
-          title: Text('Select Payment Method :'),
+          title: Center(
+              child: Text(
+            'Select Payment Method',
+            style: TextStyle(fontSize: 25.0, fontWeight: FontWeight.bold),
+          )),
           content: StatefulBuilder(
             builder: (BuildContext context, StateSetter setState) {
-              return Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                RadioListTile(
-                  title: Text("Cash"),
-                  groupValue: _currentIndex,
-                  value: 1,
-                  onChanged: (int value) {
-                    setState(() => _currentIndex = value);
-                  },
+              return Container(
+                height: size.height * 0.3,
+                width: size.width * 0.8,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 30.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: <Widget>[
+                      Container(
+                        child: Column(
+                          children: [
+                            Text(
+                              "Credit/Debit Card",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Image.asset(
+                              'assets/icons/card.png',
+                              height: size.height * 0.15,
+                              fit: BoxFit.contain,
+                            ),
+                            Radio(
+                              groupValue: _currentIndex,
+                              value: 1,
+                              onChanged: (int value) {
+                                setState(() => _currentIndex = value);
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Column(
+                          children: [
+                            Text(
+                              "Cash",
+                              style: TextStyle(fontWeight: FontWeight.bold),
+                            ),
+                            Image.asset(
+                              'assets/icons/cash.png',
+                              height: size.height * 0.15,
+                              fit: BoxFit.contain,
+                            ),
+                            Radio(
+                              groupValue: _currentIndex,
+                              value: 2,
+                              onChanged: (int value) {
+                                setState(() => _currentIndex = value);
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
-                RadioListTile(
-                  title: Text("Credit Card"),
-                  groupValue: _currentIndex,
-                  value: 2,
-                  onChanged: (int value) {
-                    setState(() => _currentIndex = value);
-                  },
-                ),
-              ]);
+              );
             },
           ),
           actions: <Widget>[
@@ -47,14 +92,14 @@ void showAlertDialog(BuildContext context) {
               child: new Text('CONFIRM'),
               onPressed: () {
                 pr.show();
-                Future.delayed(Duration(seconds: 3)).then((value) {
+                Future.delayed(Duration(seconds: 2)).then((value) {
                   pr.hide().whenComplete(() {
                     //Put the track page here .....
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                         builder: (context) {
-                          return ReviewScreen();
+                          return TrackOrder();
                         },
                       ),
                     );

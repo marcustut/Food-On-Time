@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:food_on_time/screens/underConstruction/underConstruction.dart';
 
 class FavouriteCard extends StatelessWidget {
   final String cardTitle, cardIconSvg;
-  final Function press;
 
-  const FavouriteCard({Key key, this.cardTitle, this.cardIconSvg, this.press})
+  const FavouriteCard({Key key, this.cardTitle, this.cardIconSvg})
       : super(key: key);
 
   @override
@@ -30,7 +30,14 @@ class FavouriteCard extends StatelessWidget {
       child: Material(
         color: Colors.transparent,
         child: InkWell(
-          onTap: press,
+          onTap: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => UnderConstruction(),
+              ),
+            );
+          },
           child: Column(
             mainAxisAlignment: MainAxisAlignment.end,
             children: <Widget>[
