@@ -6,7 +6,7 @@
          additional functionality it is fine to subclass or reimplement
          FlutterApplication and put your custom class here. -->
     <application
-        android:name="io.flutter.app.FlutterApplication"
+        android:name="${applicationName}"
         android:label="Food On Time"
         android:icon="@mipmap/ic_launcher">
 
@@ -15,7 +15,7 @@
                android:value="AIzaSyB0xbp_71_RI7gPmCfu6HQ_k5bciahaFsM"/>
 
         <activity
-            android:name=".MainActivity"
+            android:name="io.flutter.embedding.android.FlutterActivity"
             android:launchMode="singleTop"
             android:theme="@style/LaunchTheme"
             android:configChanges="orientation|keyboardHidden|keyboard|screenSize|smallestScreenSize|locale|layoutDirection|fontScale|screenLayout|density|uiMode"
@@ -37,6 +37,10 @@
             <meta-data
               android:name="io.flutter.embedding.android.SplashScreenDrawable"
               android:resource="@drawable/launch_background"
+              />
+            <meta-data
+              android:name="flutterEmbedding"
+              android:value="2" 
               />
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

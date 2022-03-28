@@ -100,7 +100,7 @@ class Search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomPadding: false,
+      resizeToAvoidBottomInset: false,
       backgroundColor: kPrimaryColor,
       body: SafeArea(
         child: Column(

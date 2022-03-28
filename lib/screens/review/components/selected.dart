@@ -85,21 +85,25 @@ class _BodyState extends State<Body> {
             child: Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: <Widget>[
-                  RaisedButton(
+                  ElevatedButton(
                     child: Text("Submit"),
                     onPressed: () {
                       showDialog(
                           context: context,
-                          child: new AlertDialog(
-                            title: new Text("Review"),
-                            content: new Text(
-                                "You are earn 10 reward point. Thank You! For your review."),
-                          ));
+                          builder: (_) => new AlertDialog(
+                                title: new Text("Review"),
+                                content: new Text(
+                                    "You are earn 10 reward point. Thank You! For your review."),
+                              ));
                     },
-                    color: Colors.yellow,
-                    textColor: Colors.black,
-                    padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
-                    splashColor: Colors.grey,
+                    style: ButtonStyle(
+                      foregroundColor: MaterialStateProperty.all(Colors.yellow),
+                      textStyle: MaterialStateProperty.all(
+                          TextStyle(color: Colors.black)),
+                      padding: MaterialStateProperty.all(
+                          EdgeInsets.fromLTRB(10, 10, 10, 10)),
+                      splashFactory: InkSplash.splashFactory,
+                    ),
                   )
                 ]),
           ),
