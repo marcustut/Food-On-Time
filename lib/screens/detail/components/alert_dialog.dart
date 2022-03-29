@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/screens/trackOrder/trackOrder.dart';
+import 'package:food_on_time/screens/receipt/receipt.dart';
 import 'package:progress_dialog/progress_dialog.dart';
 
 ProgressDialog pr;
@@ -95,12 +96,18 @@ void showAlertDialog(BuildContext context) {
                 Future.delayed(Duration(seconds: 2)).then((value) {
                   pr.hide().whenComplete(() {
                     //Put the track page here .....
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (context) {
+                    //       return TrackOrder();
+                    //     },
+                    //   ),
+                    // );
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) {
-                          return TrackOrder();
-                        },
+                        builder: (context) => ReceiptScreen(),
                       ),
                     );
                   });

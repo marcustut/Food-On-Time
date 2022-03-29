@@ -3,6 +3,7 @@ import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:food_on_time/constant.dart';
 import 'package:food_on_time/screens/detail/components/alert_dialog.dart';
+import 'package:food_on_time/screens/receipt/receipt.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class Body extends StatefulWidget {
