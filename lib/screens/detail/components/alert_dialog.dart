@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:food_on_time/constant.dart';
 import 'package:food_on_time/screens/trackOrder/trackOrder.dart';
 import 'package:food_on_time/screens/receipt/receipt.dart';
 import 'package:progress_dialog/progress_dialog.dart';
@@ -83,13 +84,19 @@ void showAlertDialog(BuildContext context) {
             },
           ),
           actions: <Widget>[
-            new FlatButton(
+            new TextButton(
+              style: TextButton.styleFrom(
+                primary: kPrimaryColor,
+              ),
               child: new Text('CANCEL'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
-            new FlatButton(
+            new TextButton(
+              style: TextButton.styleFrom(
+                primary: kButtonColor,
+              ),
               child: new Text('CONFIRM'),
               onPressed: () {
                 pr.show();
