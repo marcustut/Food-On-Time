@@ -6,3 +6,4 @@ const kTextColor = Color(0xFF010103);
 const kTextLightColor = Color(0xFFEEEEF6);
 const kText2Color = Color(0xFF010103);
 const kTextLight2Color = Color(0xFFEEEEF6);
+const kButtonColor = Color(0xFF00C853);
