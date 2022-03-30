@@ -1,46 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:flutter_swiper/flutter_swiper.dart';
 import 'package:food_on_time/constant.dart';
-import 'package:food_on_time/screens/detail/components/alert_dialog.dart';
+import 'package:food_on_time/models/cart.dart';
+import 'package:food_on_time/models/item.dart';
 import 'package:step_progress_indicator/step_progress_indicator.dart';
 
 class Body extends StatefulWidget {
-  final String storeTitle, address, imgPath;
-  final double rating;
+  final Item item;
 
-  const Body(
-      {Key key, this.storeTitle, this.address, this.imgPath, this.rating})
-      : super(key: key);
+  const Body({Key key, this.item}) : super(key: key);
 
   @override
   _BodyState createState() => _BodyState();
 }
 
 class _BodyState extends State<Body> {
-  int _n = 1;
-  double price = 15.9;
-  double totalPrice = 0.0;
-
-  void setInitialTotalPrice() {
-    setState(() {
-      totalPrice = _n * price;
-    });
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    setInitialTotalPrice();
-  }
-
   @override
   Widget build(BuildContext context) {
-    final String information = "1 X Cheese Burger \n"
-        "1 X French Fries \n"
-        "1 X Soft Drink \n"
-        "1 X Cheezy Wedges \n"
-        "1 X Chicken Nugget \n";
+    var cart = context.watch<CartModel>();
 
     Size size = MediaQuery.of(context).size;
 
@@ -57,7 +36,7 @@ class _BodyState extends State<Body> {
                 return ClipRRect(
                   borderRadius: BorderRadius.circular(8.0),
                   child: Image.asset(
-                    widget.imgPath,
+                    widget.item.imgPath,
                     fit: BoxFit.cover,
                   ),
                 );
@@ -86,7 +65,7 @@ class _BodyState extends State<Body> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           new Text(
-                            widget.storeTitle,
+                            widget.item.storeTitle,
                             style: new TextStyle(
                                 color: Colors.black,
                                 fontSize: 20,
@@ -94,7 +73,7 @@ class _BodyState extends State<Body> {
                           ),
                           Row(children: <Widget>[
                             new Text(
-                              "RM ${price.toStringAsFixed(2)} ",
+                              "RM ${widget.item.price.toStringAsFixed(2)} ",
                               style: new TextStyle(
                                   color: Colors.red, fontSize: 20),
                             ),
@@ -105,7 +84,7 @@ class _BodyState extends State<Body> {
                     child: Row(children: <Widget>[
                       Flexible(
                         child: new Text(
-                          "Address: ${widget.address}",
+                          "Address: ${widget.item.address}",
                           style:
                               new TextStyle(color: Colors.black, fontSize: 15),
                         ),
@@ -115,7 +94,7 @@ class _BodyState extends State<Body> {
                     padding: new EdgeInsets.only(top: 10.0),
                     child: Row(children: <Widget>[
                       RatingBar(
-                        initialRating: widget.rating,
+                        initialRating: widget.item.rating,
                         minRating: 1,
                         direction: Axis.horizontal,
                         allowHalfRating: true,
@@ -135,7 +114,7 @@ class _BodyState extends State<Body> {
                     padding: new EdgeInsets.only(top: 30.0),
                     child: Row(children: <Widget>[
                       new Text(
-                        'Details :',
+                        'Description:',
                         style: new TextStyle(
                             color: Colors.black,
                             fontSize: 20,
@@ -143,11 +122,15 @@ class _BodyState extends State<Body> {
                       ),
                     ])),
                 Container(
-                    padding: new EdgeInsets.only(top: 5.0),
+                    padding: new EdgeInsets.only(
+                        top: 5.0, bottom: 10.0, right: 20.0),
                     child: Row(children: <Widget>[
-                      new Text(
-                        information,
-                        style: new TextStyle(color: Colors.black, fontSize: 17),
+                      new Flexible(
+                        child: new Text(
+                          widget.item.description,
+                          style:
+                              new TextStyle(color: Colors.black, fontSize: 17),
+                        ),
                       ),
                     ])),
                 Container(
@@ -189,71 +172,20 @@ class _BodyState extends State<Body> {
                   ),
                 ),
                 Container(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Text(
-                        "RM ${totalPrice.toStringAsFixed(2)}",
-                        style: new TextStyle(
-                            color: Colors.deepOrange,
-                            fontSize: 17,
-                            fontWeight: FontWeight.bold),
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(right: 15.0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: <Widget>[
-                            IconButton(
-                                icon: Icon(Icons.remove),
-                                color: Colors.cyan,
-                                highlightColor: Colors.lightGreen,
-                                onPressed: () {
-                                  setState(() {
-                                    if (_n != 0) _n--;
-                                    totalPrice = price * _n;
-                                  });
-                                  print(_n);
-                                }),
-                            Text(
-                              "$_n",
-                              style: new TextStyle(
-                                  color: Colors.black, fontSize: 17),
-                            ),
-                            IconButton(
-                                icon: Icon(Icons.add),
-                                color: Colors.cyan,
-                                highlightColor: Colors.lightGreen,
-                                onPressed: () {
-                                  setState(() {
-                                    _n++;
-                                    totalPrice = price * _n;
-                                  });
-                                  print(_n);
-                                }),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-                Container(
-                  padding: new EdgeInsets.only(right: 20.0),
+                  padding: new EdgeInsets.only(top: 20.0, right: 20.0),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: <Widget>[
-                      RaisedButton(
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(18.0),
-                        ),
-                        color: Colors.deepOrange,
-                        onPressed: () {
-                          showAlertDialog(context);
-                        },
-                        child: Text(
-                          "Check Out",
-                          style: TextStyle(color: Colors.white),
-                        ),
+                      ElevatedButton(
+                        onPressed: () => cart.add(widget.item),
+                        child: Text("Add To Cart"),
+                        style: ButtonStyle(
+                            backgroundColor:
+                                MaterialStateProperty.all(Colors.deepOrange),
+                            shape: MaterialStateProperty.all(
+                                RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.all(
+                                        Radius.circular(24))))),
                       ),
                     ],
                   ),

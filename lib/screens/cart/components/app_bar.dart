@@ -8,7 +8,7 @@ class AppBars extends PreferredSize {
   Widget build(BuildContext context) {
     return AppBar(
       backgroundColor: kPrimaryColor,
-      title: new Text('Detail'),
+      title: new Text('Cart'),
       leading: IconButton(
         icon: Icon(
           Icons.arrow_back,

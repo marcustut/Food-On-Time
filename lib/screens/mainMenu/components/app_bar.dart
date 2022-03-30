@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
+import 'package:food_on_time/screens/cart/cartScreen.dart';
 import 'package:food_on_time/screens/underConstruction/underConstruction.dart';
 
 AppBar menuAppBar(BuildContext context) {
@@ -49,14 +50,14 @@ AppBar menuAppBar(BuildContext context) {
     actions: <Widget>[
       IconButton(
         icon: Icon(
-          Icons.assignment,
+          Icons.shopping_cart,
           color: kTextLightColor,
         ),
         onPressed: () {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => UnderConstruction(),
+              builder: (context) => CartScreen(),
             ),
           );
         },

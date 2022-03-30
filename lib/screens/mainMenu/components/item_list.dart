@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:food_on_time/screens/mainMenu/components/item_card.dart';
 import 'package:food_on_time/screens/detail/detail-screen.dart';
 import 'package:food_on_time/constant.dart';
-import 'package:food_on_time/screens/mainMenu/models/item.dart';
+import 'package:food_on_time/models/item.dart';
 
 class ItemList extends StatelessWidget {
   final String categoryTitle, jsonPath;
@@ -72,10 +72,18 @@ class ItemList extends StatelessWidget {
                                           MaterialPageRoute(
                                             builder: (context) {
                                               return DetailScreen(
-                                                address: store.address,
-                                                imgPath: store.imgPath,
-                                                rating: store.rating,
-                                                storeTitle: store.storeTitle,
+                                                item: Item(
+                                                  storeTitle: store.storeTitle,
+                                                  address: store.address,
+                                                  imgPath: store.imgPath,
+                                                  tags: store.tags,
+                                                  distance: store.distance,
+                                                  rating: store.rating,
+                                                  checkIns: store.checkIns,
+                                                  price: store.price,
+                                                  description:
+                                                      store.description,
+                                                ),
                                               );
                                             },
                                           ),

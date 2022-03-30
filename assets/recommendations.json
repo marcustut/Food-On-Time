@@ -1,29 +1,35 @@
 [
   {
-    "storeTitle": "Sushi Hiro",
-    "address": "77, Jalan Radin Bagus, Sri Petaling, 57000 Kuala Lumpur.",
+    "storeTitle": "Sushi Plate",
+    "address": "Sushi Hiro @ 77, Jalan Radin Bagus, Sri Petaling, 57000 Kuala Lumpur.",
     "imgPath": "assets/images/sushi-hiro.jpg",
     "tags": "#sushi #salmon #japanese",
     "distance": 2.7,
     "rating": 4.0,
-    "checkIns": 126
+    "checkIns": 126,
+    "price": 13.90,
+    "description": "At Sushi Hiro, we bring you the best and freshest quality of seafood that is available from local and international waters at an affordable price. Our kaiten belt consists sushi of two pieces which are RM 1.90 and RM 2.90, allowing all to enjoy the authentic flavour of Japanese sushi."
   },
   {
-    "storeTitle": "Domino's",
-    "address": "138, Jalan Jejaka, Maluri, 55100 Kuala Lumpur, Wilayah Persekutuan.",
+    "storeTitle": "Hawaiian Pizza",
+    "address": "Domino's @ 138, Jalan Jejaka, Maluri, 55100 Kuala Lumpur, Wilayah Persekutuan.",
     "imgPath": "assets/images/dominos.jpg",
     "tags": "#pizza #fastfood",
     "distance": 3.2,
     "rating": 4.0,
-    "checkIns": 48
+    "checkIns": 48,
+    "price": 17.90,
+    "description": "Classic Hawaiian Pizza combines pizza sauce, cheese, cooked ham, and pineapple."
   },
   {
-    "storeTitle": "Ayu West Grill",
-    "address": "Lot 65089, Persiaran Puchong Prima, Taman Puchong Permai, 47500 Puchong, Selangor.",
+    "storeTitle": "Steak",
+    "address": "Ayu West Grill @ Lot 65089, Persiaran Puchong Prima, Taman Puchong Permai, 47500 Puchong, Selangor.",
     "imgPath": "assets/images/ayu-west-grill.jpg",
     "tags": "#western #steak #pasta",
     "distance": 4.5,
     "rating": 5.0,
-    "checkIns": 165
+    "checkIns": 165,
+    "price": 15.90,
+    "description": "Steak is a food that can be described as tender, flavorful, juicy, and cooked to perfection; in fact, most consumers describe their ideal steak as just that: \"A tender, flavorful, medium-rare steak that isn't overly salty.\" \"Tender, juicy, cooked perfectly and perfectly seasoned.\" \"Cooked to perfection.\""
   }
 ]
