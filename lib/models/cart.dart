@@ -11,6 +11,14 @@ class CartModel extends ChangeNotifier {
   double get totalPrice =>
       _cart.entries.fold(0, (pv, e) => pv + e.key.price * e.value);
 
+  List<Item> get allItems {
+    List<Item> items = [];
+    _cart.entries.forEach((e) {
+      for (int i = 0; i < e.value; i++) items.add(e.key);
+    });
+    return items;
+  }
+
   void removeFromCart(Item item) {
     if (!_cart.containsKey(item)) return;
 

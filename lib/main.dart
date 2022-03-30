@@ -23,8 +23,20 @@ class _MyAppState extends State<MyApp> {
             primaryColor: kPrimaryColor,
             scaffoldBackgroundColor: Colors.white,
             textTheme: TextTheme(
+              headline2: TextStyle(
+                color: kTextColor,
+                fontSize: 25,
+                fontFamily: 'SourceCodePro',
+                fontWeight: FontWeight.w900,
+                decoration: TextDecoration.underline,
+              ),
               bodyText1: TextStyle(color: kSecondaryColor),
-              bodyText2: TextStyle(color: kSecondaryColor),
+              bodyText2: TextStyle(color: kTextLightColor),
+              caption: TextStyle(
+                  color: Colors.black54,
+                  fontSize: 15,
+                  fontFamily: 'SourceCodePro',
+                  fontWeight: FontWeight.w600),
             )),
         home: GetStarted(),
       ),

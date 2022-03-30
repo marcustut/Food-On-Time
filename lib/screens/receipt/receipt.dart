@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
+import 'package:food_on_time/models/cart.dart';
 import 'package:food_on_time/screens/loginRegister/loginSheet.dart';
 import 'package:food_on_time/screens/mainMenu/components/app_bar.dart';
 import 'package:food_on_time/screens/trackOrder/trackOrder.dart';
@@ -8,6 +9,7 @@ import 'package:food_on_time/screens/receipt/components/receiptItem.dart';
 import 'package:food_on_time/screens/receipt/components/receiptNewline.dart';
 import 'package:intl/intl.dart'; //for date format
 import 'package:intl/date_symbol_data_local.dart'; //for date locale
+import 'package:provider/provider.dart';
 import 'components/app_bar.dart';
 
 class ReceiptScreen extends StatelessWidget {
@@ -15,6 +17,8 @@ class ReceiptScreen extends StatelessWidget {
   String time = DateFormat("HH:mm:ss").format(DateTime.now());
   @override
   Widget build(BuildContext context) {
+    var cart = context.watch<CartModel>();
+
     return Scaffold(
       appBar: AppBars(),
       body: Container(
@@ -87,30 +91,22 @@ class ReceiptScreen extends StatelessWidget {
               ],
             ),
             ReceiptNewline(),
-            ReceiptItem(
-                itemName: "SPAGHETTI WITH HOT DOG & MINCED CHICKEN",
-                amount: "4.50"),
-            ReceiptItem(
-                itemName: "HAKKA NOODLE WITH MUSHROOM & MINCED CHICKEN",
-                amount: "4.00"),
-            ReceiptItem(
-                itemName: "RAMEN SOUP WITH SMOKED DUCK BREAST", amount: "5.00"),
-            ReceiptItem(
-                itemName: "SZE CHUAN \"TAN TAN\" RAMEN", amount: "4.50"),
-            ReceiptItem(
-                itemName: "RICE NOODLE SZE CHUAN MA LA SOUP WITH BOILED EGG",
-                amount: "5.50"),
-            ReceiptItem(
-                itemName: "KUAI TEOW SOUP WITH FISH BALL & SEAWEED",
-                amount: "4.00"),
+            ...cart.allItems.map((e) => ReceiptItem(
+                itemName: e.storeTitle, amount: e.price.toStringAsFixed(2))),
             ReceiptNewline(),
-            ReceiptItem(itemName: "SUBTOTAL: ", amount: "27.50"),
-            ReceiptItem(itemName: "TAX (10% SST): ", amount: "2.75"),
+            ReceiptItem(
+                itemName: "SUBTOTAL: ",
+                amount: "${cart.totalPrice.toStringAsFixed(2)}"),
+            ReceiptItem(
+                itemName: "TAX (10% SST): ",
+                amount: "${(cart.totalPrice * 0.1).toStringAsFixed(2)}"),
             Container(
               decoration: BoxDecoration(
                 color: kSecondaryColor,
               ),
-              child: ReceiptItem(itemName: "TOTAL AMOUNT: ", amount: "30.25"),
+              child: ReceiptItem(
+                  itemName: "TOTAL AMOUNT: ",
+                  amount: "${(cart.totalPrice * 1.1).toStringAsFixed(2)}"),
             ),
             ReceiptNewline(),
             Container(
@@ -131,7 +127,6 @@ class ReceiptScreen extends StatelessWidget {
                 textAlign: TextAlign.justify,
               ),
             ),
-            
             Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
@@ -139,6 +134,7 @@ class ReceiptScreen extends StatelessWidget {
                     primary: kButtonColor,
                   ),
                   onPressed: () {
+                    cart.clear();
                     Navigator.push(
                       context,
                       MaterialPageRoute(
