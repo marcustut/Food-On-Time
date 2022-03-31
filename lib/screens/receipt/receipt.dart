@@ -12,6 +12,7 @@ import 'package:intl/date_symbol_data_local.dart'; //for date locale
 import 'package:provider/provider.dart';
 import 'components/app_bar.dart';
 
+// ignore: must_be_immutable
 class ReceiptScreen extends StatelessWidget {
   String date = DateFormat("dd-MM-yyyy").format(DateTime.now());
   String time = DateFormat("HH:mm:ss").format(DateTime.now());

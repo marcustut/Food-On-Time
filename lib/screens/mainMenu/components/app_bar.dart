@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:food_on_time/constant.dart';
 import 'package:food_on_time/screens/cart/cartScreen.dart';
-import 'package:food_on_time/screens/underConstruction/underConstruction.dart';
+
+import '../../report/reportScreen.dart';
 
 AppBar menuAppBar(BuildContext context) {
   return AppBar(
@@ -48,20 +49,29 @@ AppBar menuAppBar(BuildContext context) {
       ),
     ),
     actions: <Widget>[
-      IconButton(
-        icon: Icon(
-          Icons.shopping_cart,
-          color: kTextLightColor,
-        ),
-        onPressed: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => CartScreen(),
+      GestureDetector(
+          child: IconButton(
+            icon: Icon(
+              Icons.shopping_cart,
+              color: kTextLightColor,
             ),
-          );
-        },
-      )
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => CartScreen(),
+                ),
+              );
+            },
+          ),
+          onLongPress: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => ReportScreen(),
+              ),
+            );
+          })
     ],
   );
 }
