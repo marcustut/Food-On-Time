@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 
 class ListItem extends StatefulWidget {
-  List<String> listItems;
-  String headerTitle;
+  final String headerTitle;
+  final int totalSales;
+  final double totalRevenue;
 
-  ListItem(this.headerTitle, this.listItems);
+  ListItem(this.headerTitle, this.totalSales, this.totalRevenue);
 
   @override
   State<StatefulWidget> createState() {
@@ -22,7 +23,6 @@ class ListItemState extends State<ListItem> {
 
   @override
   Widget build(BuildContext context) {
-    List<String> listItem = this.widget.listItems;
     return Padding(
       padding: (isExpand == true)
           ? const EdgeInsets.all(8.0)
@@ -33,7 +33,7 @@ class ListItemState extends State<ListItem> {
             borderRadius: (isExpand != true)
                 ? BorderRadius.all(Radius.circular(8))
                 : BorderRadius.all(Radius.circular(22)),
-            border: Border.all(color: Colors.pink)),
+            border: Border.all(color: Colors.orangeAccent)),
         child: ExpansionTile(
           key: PageStorageKey<String>(this.widget.headerTitle),
           title: Container(
@@ -46,41 +46,65 @@ class ListItemState extends State<ListItem> {
               ? Icon(
                   Icons.arrow_drop_down,
                   size: 32,
-                  color: Colors.pink,
+                  color: Colors.orangeAccent,
                 )
-              : Icon(Icons.arrow_drop_up, size: 32, color: Colors.pink),
+              : Icon(Icons.arrow_drop_up, size: 32, color: Colors.orangeAccent),
           onExpansionChanged: (value) {
             setState(() {
               isExpand = value;
             });
           },
           children: [
-            for (final item in listItem)
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: InkWell(
-                  onTap: () {
-                    Scaffold.of(context).showSnackBar(SnackBar(
-                        backgroundColor: Colors.pink,
-                        duration: Duration(microseconds: 500),
-                        content: Text(
-                            "Selected Item $item " + this.widget.headerTitle)));
-                  },
-                  child: Container(
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                          color: Colors.grey,
-                          borderRadius: BorderRadius.all(Radius.circular(4)),
-                          border: Border.all(color: Colors.pinkAccent)),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Text(
-                          item,
-                          style: TextStyle(color: Colors.white),
-                        ),
-                      )),
-                ),
-              )
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                // onTap: () {
+                //   Scaffold.of(context).showSnackBar(SnackBar(
+                //       backgroundColor: Colors.pink,
+                //       duration: Duration(microseconds: 500),
+                //       content: Text(
+                //           "Selected Item $item " + this.widget.headerTitle)));
+                // },
+                child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        border: Border.all(color: Colors.orangeAccent)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Total Sales: ${this.widget.totalSales}",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: InkWell(
+                // onTap: () {
+                //   Scaffold.of(context).showSnackBar(SnackBar(
+                //       backgroundColor: Colors.pink,
+                //       duration: Duration(microseconds: 500),
+                //       content: Text(
+                //           "Selected Item $item " + this.widget.headerTitle)));
+                // },
+                child: Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.all(Radius.circular(4)),
+                        border: Border.all(color: Colors.orangeAccent)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Text(
+                        "Total Revenue: RM${this.widget.totalRevenue.toStringAsFixed(2)}",
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    )),
+              ),
+            )
           ],
         ),
       ),

@@ -1,76 +1,78 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:food_on_time/constant.dart';
 import 'package:food_on_time/screens/report/list_item.dart';
 
 class ReportScreen extends HookWidget {
   @override
   Widget build(BuildContext context) {
-    List<Map<dynamic, dynamic>> list_product = get_list_product();
+    var listProduct = getListProduct();
 
     return Scaffold(
-      backgroundColor: Colors.brown[400],
+      backgroundColor: kPrimaryColor,
       appBar: AppBar(
-        backgroundColor: Colors.pink,
-        // title: Text(widget.title),
+        backgroundColor: kPrimaryColor,
+        title: Text("Report"),
       ),
       body: Center(
           child: ListView(
         children: <Widget>[
-          for (final map in list_product)
-            for (final keys in map.keys) ListItem(keys, map[keys].toList()),
+          ...listProduct.entries
+              .map((e) => ListItem(e.key, e.value[0].toInt(), e.value[1]))
         ],
       )),
     );
   }
 
-  List<Map<dynamic, dynamic>> get_list_product() {
-    List<Map<dynamic, dynamic>> listProduct = new List();
-    for (var k = 1; k <= 12; k++) {
-      Map map = Map();
-      map.putIfAbsent(getMonth(k), () => getWeeks());
-      listProduct.add(map);
-    }
-    return listProduct.map((s) {}).map((list) => list).toList();
-  }
-
-  String getMonth(int month) {
-    switch (month) {
-      case 1:
-        return "January";
-      case 2:
-        return "Febraury";
-      case 3:
-        return "March";
-      case 4:
-        return "April";
-      case 5:
-        return "May";
-      case 6:
-        return "June";
-      case 7:
-        return "July";
-      case 8:
-        return "August";
-      case 9:
-        return "September";
-      case 10:
-        return "October";
-      case 11:
-        return "November";
-      case 12:
-        return "December";
-    }
-  }
-
-  List<dynamic> getWeeks() {
-    return [
-      "Monday",
-      "Tuesday",
-      "Wednesday",
-      "Thursday",
-      "Friday",
-      "Saterday",
-      "Sunday",
-    ].toList();
-  }
+  Map<String, List<double>> getListProduct() => {
+        "January": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "February": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "March": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "April": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "May": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "June": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "July": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "August": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "September": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "October": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "November": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+        "December": [
+          (1000 + Random().nextInt(2412 - 1000)).toDouble(),
+          18000 + Random().nextInt(28944 - 18000) + Random().nextDouble()
+        ],
+      };
 }
